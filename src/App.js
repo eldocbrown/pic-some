@@ -10,7 +10,6 @@ function App() {
       <>
         <Router basename={process.env.PUBLIC_URL}>
             <Header />
-            <h1>Home Page</h1>
 
             <Switch>
               <Route exact path='/' component={Photos}></Route>

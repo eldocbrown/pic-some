@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders home page title', () => {
   render(<Router><App /></Router>);
-  const linkElement = screen.getByText(/Home Page/i);
+  const linkElement = screen.getByText(/Images go here/i);
   expect(linkElement).toBeInTheDocument();
 });
