@@ -1,14 +1,23 @@
 import React from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+
 import Header from "./components/Header"
 import Cart from "./pages/Cart"
 import Photos from "./pages/Photos"
 
-function App() {    
+function App() {
     return (
-        <div>
+      <>
+        <Router>
             <Header />
             <h1>Home Page</h1>
-        </div>
+
+            <Switch>
+              <Route exact path='/' component={Photos}></Route>
+              <Route path='/cart' component={Cart}></Route>
+            </Switch>
+        </Router>
+      </>
     )
 }
 
