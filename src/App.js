@@ -8,7 +8,7 @@ import Photos from "./pages/Photos"
 function App() {
     return (
       <>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Header />
             <h1>Home Page</h1>
 
