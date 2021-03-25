@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import App from './App';
+import App from './App'
+import {AppContextProvider} from './appContext'
 
-test('renders home page title', () => {
-  render(<Router><App /></Router>);
-  const linkElement = screen.getByText(/Images go here/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('renders App with no errors', () => {
+  render(<AppContextProvider><Router><App /></Router></AppContextProvider>)
+})

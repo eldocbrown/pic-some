@@ -3,31 +3,20 @@ const AppContext = React.createContext()
 
 const dataURL = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
 
-function AppContextProvider(props) {
+function AppContextProvider({children}) {
 
-    const [ context, setContext ] = useState({
-      photos: []
-    })
+    const [ allPhotos, setAllPhotos ] = useState([])
 
-    function changeContext() {
-      setContext({
-        photos: []
-      })
-    }
-
+    // Get images data after 1st render is complete
     useEffect(() => {
       fetch(dataURL)
         .then(response => response.json())
-        .then(data => {
-          setContext({
-            photos: data
-          })
-        })
+        .then(data => setAllPhotos(data))
     }, [])
 
     return (
-      <AppContext.Provider value={{context, changeContext}}>
-        {props.children}
+      <AppContext.Provider value={{allPhotos}}>
+        {children}
       </AppContext.Provider>
     )
 }
