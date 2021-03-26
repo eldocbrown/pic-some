@@ -6,6 +6,7 @@ const dataURL = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootc
 function AppContextProvider({children}) {
 
     const [ allPhotos, setAllPhotos ] = useState([])
+    const [ cartItems, setCartItems ] = useState([])
 
     // Get images data after 1st render is complete
     useEffect(() => {
@@ -18,8 +19,16 @@ function AppContextProvider({children}) {
       setAllPhotos((prevAllPhotos) => prevAllPhotos.map((ph) => ph.id === id ? {...ph, isFavorite: !ph.isFavorite} : ph))
     }
 
+    const addItemToCart = (item) => {
+      setCartItems((prevCartItems) => [...prevCartItems, item])
+    }
+
+    const removeItemFromCart = (item) => {
+      setCartItems((prevCartItems) => prevCartItems.filter((ph) => ph.id !== item.id))
+    }
+
     return (
-      <AppContext.Provider value={{allPhotos, toggleFavorite}}>
+      <AppContext.Provider value={{allPhotos, toggleFavorite, cartItems, addItemToCart, removeItemFromCart}}>
         {children}
       </AppContext.Provider>
     )
