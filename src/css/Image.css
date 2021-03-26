@@ -38,3 +38,7 @@ img.image-grid {
     left: 5px;
     cursor: pointer;
 }
+
+.ri-heart-fill {
+    opacity: .7;
+}

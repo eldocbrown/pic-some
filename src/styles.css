@@ -67,10 +67,6 @@ div.order-button > button:disabled {
     margin-left: 10px;
 }
 
-.ri-heart-fill {
-    opacity: .7;
-}
-
 .ri-delete-bin-line, .ri-delete-bin-fill {
     font-size: 1.3em;
     cursor: pointer;

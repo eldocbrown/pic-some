@@ -14,8 +14,12 @@ function AppContextProvider({children}) {
         .then(data => setAllPhotos(data))
     }, [])
 
+    const toggleFavorite = (id) => { // Loop through all photos and flip the isFavorite property only on the photo with the id from the parameter
+      setAllPhotos((prevAllPhotos) => prevAllPhotos.map((ph) => ph.id === id ? {...ph, isFavorite: !ph.isFavorite} : ph))
+    }
+
     return (
-      <AppContext.Provider value={{allPhotos}}>
+      <AppContext.Provider value={{allPhotos, toggleFavorite}}>
         {children}
       </AppContext.Provider>
     )
