@@ -43,7 +43,7 @@ img.image-grid {
     opacity: .7;
 }
 
-.ri-delete-bin-line, .ri-delete-bin-fill {
+.ri-delete-bin-fill {
     font-size: 1.3em;
     cursor: pointer;
 }
