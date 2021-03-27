@@ -35,9 +35,14 @@ function Cart() {
       <h1>Check out</h1>
       {cartItemElements}
       <p className="total-cost">Total: {orderPriceDisplay}</p>
-      <div className="order-button">
-        <button onClick={handlePlaceOrderClick} disabled={ordering}>{orderButtonDisplay()}</button>
-      </div>
+      {
+        cartItems.length ?
+          <div className="order-button">
+            <button onClick={handlePlaceOrderClick} disabled={ordering}>{orderButtonDisplay()}</button>
+          </div>
+          :
+          <p>No items in cart</p>
+      }
     </main>
   )
 }
