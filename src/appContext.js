@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-const AppContext = React.createContext()
+import firebase from './utils/firebase'
 
-const dataURL = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
+const AppContext = React.createContext()
 
 function AppContextProvider({children}) {
 
@@ -10,9 +10,19 @@ function AppContextProvider({children}) {
 
     // Get images data after 1st render is complete
     useEffect(() => {
-      fetch(dataURL)
-        .then(response => response.json())
-        .then(data => setAllPhotos(data))
+      const itemsRef = firebase.database().ref('photos')
+      itemsRef.on('value', (snapshot) => {
+        let photos = snapshot.val();
+        let newState = [];
+        for (let photo in photos) {
+          newState.push({
+            url: photos[photo],
+            id: photo,
+            isFavorite: false
+          });
+        }
+        setAllPhotos(newState)
+      })
     }, [])
 
     const toggleFavorite = (id) => { // Loop through all photos and flip the isFavorite property only on the photo with the id from the parameter
