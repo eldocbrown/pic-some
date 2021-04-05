@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import firebase from './utils/firebase'
+import db from './utils/firebase'
 
 const AppContext = React.createContext()
 
-function AppContextProvider({children}) {
+function AppContextProvider({children, firebaseConfig}) {
 
     const [ allPhotos, setAllPhotos ] = useState([])
     const [ cartItems, setCartItems ] = useState([])
 
     // Get images data after 1st render is complete
     useEffect(() => {
-      const itemsRef = firebase.database().ref('photos')
+      const itemsRef = db.ref('photos')
       itemsRef.on('value', (snapshot) => {
         let photos = snapshot.val();
         let newState = [];

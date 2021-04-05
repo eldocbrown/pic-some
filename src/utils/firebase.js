@@ -1,4 +1,5 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
 
 // Should be a different config for different environments
 const firebaseConfig = {
@@ -12,4 +13,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-export default firebase
+const db = firebase.database()
+
+export default db
